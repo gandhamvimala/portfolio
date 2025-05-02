@@ -56,29 +56,6 @@
       padding: 1rem;
       background: #eee;
     }
-    form {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 600px;
-    }
-    input, textarea {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    button {
-      background: #7b1fa2;
-      color: white;
-      padding: 0.75rem;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background: #4a148c;
-    }
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -117,6 +94,80 @@
       list-style-type: none;
       padding: 0;
     }
+
+    /* Modern Form Styling */
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+      width: 100%;
+    }
+
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 1rem 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #fff;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 50%;
+      left: 0.75rem;
+      transform: translateY(-50%);
+      background: white;
+      padding: 0 0.25rem;
+      font-size: 1rem;
+      color: #888;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .input-group input:focus + label,
+    .input-group textarea:focus + label,
+    .input-group input:not(:placeholder-shown) + label,
+    .input-group textarea:not(:placeholder-shown) + label {
+      top: -10px;
+      left: 10px;
+      font-size: 0.75rem;
+      color: #7b1fa2;
+    }
+
+    .input-group input:focus,
+    .input-group textarea:focus {
+      border-color: #7b1fa2;
+      box-shadow: 0 0 0 2px rgba(123, 31, 162, 0.2);
+    }
+
+    button {
+      background: #7b1fa2;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: #4a148c;
+    }
+
+    .form-feedback {
+      margin-top: 0.5rem;
+      color: green;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -138,16 +189,16 @@
       <img src="profile pic.png" alt="Vimala Gandham's Profile Picture" class="profile-img" />
       <div class="text">
         <p>
-          I’m a dynamic professional working full-time as a Senior QA Lead at ON24, where I manage manual testing using Jira and Xray, and build automation frameworks with Selenium and JUnit. I also design and implement websites as a freelancer, with a specialization in front-end development and API testing using Python. I love combining technical precision with aesthetic design.
+          I’m a dynamic professional working full-time as a Senior QA Lead at ON24, where I manage manual testing using Jira and Xray, and build automation frameworks with Selenium and JUnit. I also design and implement websites as a freelancer, with a specialization in front-end development and API testing using Python.
         </p>
         <p>
           I'm passionate about staying active and creative whether it’s designing or diving into hands-on projects. In my free time, I enjoy nature walks and visiting scenic places to recharge.
         </p>
         <p>
-          On Instagram, I share my creative journey through posts and reels about gardening, personal styling, cooking, festivals, and lifestyle tips a reflection of the things that bring me joy and inspiration.
+          On Instagram, I share my creative journey through posts and reels about gardening, personal styling, cooking, festivals, and lifestyle tips — a reflection of the things that bring me joy and inspiration.
         </p>
         <div class="social-links">
-           <a href="https://www.instagram.com/gandham_vimala" target="_blank">Follow me on Instagram</a>
+          <a href="https://www.instagram.com/gandham_vimala" target="_blank">Follow me on Instagram</a>
         </div>
       </div>
     </div>
@@ -178,7 +229,8 @@
       <a href="https://gandhamvimala.github.io/7decor" target="_blank">Visit Website</a>
     </div>
   </section>
- <section id="contact" class="fade-in">
+
+  <section id="contact" class="fade-in">
     <h2>Contact Me</h2>
     <form action="https://formspree.io/f/mqaqpaag" method="POST" id="contactForm">
       <div class="input-group">
@@ -198,7 +250,8 @@
     </form>
     <p>Email: <a href="mailto:gandhamvimala@gmail.com">gandhamvimala@gmail.com</a></p>
   </section>
- <footer>
+
+  <footer>
     <p>&copy; 2025 Vimala Gandham. All rights reserved.</p>
   </footer>
 
@@ -220,12 +273,12 @@
       rootMargin: "0px 0px -50px 0px"
     };
 
-    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         entry.target.style.opacity = 1;
         entry.target.style.transform = 'translateY(0)';
-        appearOnScroll.unobserve(entry.target);
+        observer.unobserve(entry.target);
       });
     }, appearOptions);
 
@@ -235,12 +288,30 @@
       appearOnScroll.observe(fader);
     });
 
-    // Contact Form Confirmation
-    const form = document.querySelector('form');
+    // Contact Form Submission
+    const form = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+
     form.addEventListener('submit', function (e) {
-      setTimeout(() => {
-        alert('Thanks for reaching out! I’ll get back to you soon.');
-      }, 100);
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          feedback.textContent = "Thanks for reaching out! I’ll get back to you soon.";
+          form.reset();
+        } else {
+          feedback.textContent = "Oops! Something went wrong. Please try again.";
+        }
+      }).catch(() => {
+        feedback.textContent = "There was an error sending your message.";
+      });
     });
   </script>
 </body>
