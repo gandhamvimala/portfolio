@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vimala Gandham | Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #4a148c;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      background: #6a1b9a;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      padding: 0.5rem;
+      display: inline-block;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .project {
+      background: white;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-left: 5px solid #7b1fa2;
+      width: 100%;
+      max-width: 800px;
+    }
+    .project a {
+      color: #7b1fa2;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #eee;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 600px;
+    }
+    input, textarea {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #7b1fa2;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #4a148c;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .hover-effect:hover {
+      transform: scale(1.05);
+      transition: all 0.3s ease;
+    }
+    .profile-img {
+      max-width: 200px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    .about-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .about-container .text {
+      max-width: 600px;
+      text-align: left;
+    }
+    .social-links a {
+      color: #7b1fa2;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    #skills ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.5rem;
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="fade-in">
+    <h1>Vimala Gandham</h1>
+    <p>Sr QA Lead | Creative Developer | Passionate Designer | Nature Lover</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <div class="about-container">
+      <img src="C:\Users\vimala.gandham\Desktop\profile pic.png" alt="Vimala Gandham's Profile Picture" class="profile-img" />
+      <div class="text">
+        <p>
+          I'm a full-time Senior QA Lead at ON24, specializing in manual testing using Jira and Xray for test planning and execution. I also work with Selenium and JUnit framework for automation testing. I'm a self-driven and creative individual who thrives on staying active and productive. Passionate about design, organization, and problem-solving, I enjoy bringing ideas to life through code — and when I'm not at my desk, you'll find me exploring nature or going on long walks.
+        </p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/gandhamvimala" target="_blank">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="fade-in">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>JavaScript</li>
+      <li>Responsive Web Design</li>
+      <li>Git & GitHub</li>
+      <li>UI/UX Design Principles</li>
+      <li>Basic SEO</li>
+      <li>Website Deployment (GitHub Pages)</li>
+      <li>Python (for scripting)</li>
+      <li>Manual Testing</li>
+      <li>Jira & Xray</li>
+      <li>Selenium</li>
+      <li>JUnit Framework</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="project hover-effect">
+      <h3>Website Designed for Event Decor Business</h3>
+      <p>A modern, responsive website for an event decor company, featuring service sections, a gallery, rentals, and booking forms.</p>
+      <a href="https://gandhamvimala.github.io/7decor" target="_blank">Live Demo</a>
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="_replyto" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p>Email: <a href="mailto:gandhamvimala@gmail.com">gandhamvimala@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Vimala Gandham. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth Scroll for Nav
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Fade-in on Scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      fader.style.opacity = 0;
+      fader.style.transform = 'translateY(20px)';
+      appearOnScroll.observe(fader);
+    });
+
+    // Contact Form Confirmation
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function (e) {
+      setTimeout(() => {
+        alert('Thanks for reaching out! I’ll get back to you soon.');
+      }, 100);
+    });
+  </script>
+</body>
+</html>
