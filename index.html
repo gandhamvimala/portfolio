@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vimala Gandham | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --purple: #4a148c;
+      --purple-mid: #6a1b9a;
+      --purple-light: #7b1fa2;
+      --purple-soft: #e8d5f5;
+      --teal: #00897b;
+      --teal-light: #00bfa5;
+      --gold: #f9a825;
+      --bg: #f7f5fb;
+      --white: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6b6b8a;
+      --border: #e0d6f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    ul { list-style: none; padding: 0; margin: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #1a0533 0%, #4a148c 55%, #1a0533 100%);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(0,191,165,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(249,168,37,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    header p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+    .header-tags {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      position: relative;
+    }
+    .header-tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      padding: 0.25rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #1a0533;
+      text-align: center;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    nav a {
+      color: rgba(255,255,255,0.65);
+      padding: 0.85rem 1.2rem;
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--teal-light); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .divider {
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple-light), var(--teal));
+      border-radius: 2px;
+      margin: 0.75rem 0 2rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--purple-light);
+      flex-shrink: 0;
+    }
+    .about-text p { line-height: 1.75; color: var(--muted); margin-bottom: 0.8rem; font-size: 0.95rem; }
+    .social-links a {
+      color: var(--purple-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ── PROJECT CATEGORIES ── */
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2.5rem 0 1.25rem;
+    }
+    .category-badge {
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .badge-work {
+      background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+      color: white;
+    }
+    .badge-ai {
+      background: linear-gradient(135deg, #004d40, var(--teal));
+      color: white;
+    }
+    .badge-freelance {
+      background: linear-gradient(135deg, #e65100, #ff8f00);
+      color: white;
+    }
+    .category-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .category-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── PROJECT CARD ── */
+    .project {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .project::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--purple-light), var(--teal));
+      border-radius: 4px 0 0 4px;
+    }
+    .project.ai-project::before {
+      background: linear-gradient(180deg, var(--teal), var(--teal-light));
+    }
+    .project.freelance-project::before {
+      background: linear-gradient(180deg, #ff8f00, #ffca28);
+    }
+    .project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(74,20,140,0.1);
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+    .project h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .project-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .project-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--purple-light);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 0.8rem;
+    }
+    .project-link:hover { color: var(--teal); }
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+    .tech-tag {
+      background: var(--purple-soft);
+      color: var(--purple);
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: 'DM Mono', monospace;
+    }
+    .tech-tag.teal { background: #e0f2f1; color: #004d40; }
+    .tech-tag.orange { background: #fff3e0; color: #e65100; }
+    .project ul {
+      margin: 0.5rem 0 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+    .project ul li {
+      padding-left: 1.1rem;
+      position: relative;
+    }
+    .project ul li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      font-size: 0.5rem;
+      top: 0.45rem;
+      color: var(--teal);
+    }
+    .poc-tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+    .poc-tool {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.78rem;
+      color: var(--text);
+    }
+    .poc-tool strong {
+      display: block;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+
+    /* ── SKILLS ── */
+    #skills ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.6rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #skills li {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--purple);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    #skills li:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(74,20,140,0.1); }
+
+    /* ── CONTACT ── */
+    form { display: flex; flex-direction: column; gap: 1.2rem; width: 100%; max-width: 600px; }
+    .input-group { position: relative; }
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 1rem 0.85rem 0.6rem;
+      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--text);
+      transition: border-color 0.25s;
+      outline: none;
+    }
+    .input-group label {
+      position: absolute;
+      top: 50%;
+      left: 0.85rem;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+      color: var(--muted);
+      pointer-events: none;
+      transition: 0.25s ease;
+      background: white;
+      padding: 0 0.2rem;
+    }
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label,
+    .input-group textarea:focus + label,
+    .input-group textarea:not(:placeholder-shown) + label {
+      top: -10px;
+      font-size: 0.72rem;
+      color: var(--purple-light);
+    }
+    .input-group input:focus,
+    .input-group textarea:focus {
+      border-color: var(--purple-light);
+      box-shadow: 0 0 0 3px rgba(123,31,162,0.12);
+    }
+    button[type=submit] {
+      background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    button[type=submit]:hover { opacity: 0.9; transform: translateY(-1px); }
+    .form-feedback { color: var(--teal); font-weight: 600; font-size: 0.85rem; }
+    #contact p { margin-top: 1.25rem; color: var(--muted); font-size: 0.9rem; }
+    #contact a { color: var(--purple-light); }
+
+    /* ── RESUME ── */
+    #resume { text-align: center; }
+    .resume-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 2rem;
+      border: 2px solid var(--purple-light);
+      border-radius: 10px;
+      color: var(--purple-light);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .resume-btn:hover { background: var(--purple-light); color: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #1a0533;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.8rem;
+    }
+
+    /* ── FADE-IN ── */
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <header class="fade-in">
+    <h1>Vimala Gandham</h1>
+    <p>Senior QA Lead &nbsp;·&nbsp; AI Tools Builder &nbsp;·&nbsp; Front-End Developer</p>
+    <div class="header-tags">
+      <span class="header-tag">San Ramon, CA</span>
+      <span class="header-tag">U.S. Citizen</span>
+      <span class="header-tag">10+ Years QA</span>
+      <span class="header-tag">gandhamvimala@gmail.com</span>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about" class="fade-in">
+    <div class="section-label">Introduction</div>
+    <h2>About Me</h2>
+    <div class="divider"></div>
+    <div class="about-container">
+      <div class="profile-img" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#4a148c,#7b1fa2);color:white;font-size:2.5rem;font-weight:700;letter-spacing:-1px;flex-shrink:0;">VG</div>
+      <div class="about-text">
+        <p>
+          I'm a Senior QA Lead at ON24 with 10+ years of experience driving software quality across the full SDLC, leading US and offshore teams, building test automation frameworks, and delivering data-driven QA insights.
+        </p>
+        <p>
+          Over the past two years I've also stepped into a Project Manager role, overseeing cross-functional delivery and timelines. Recently I completed a 2-week AI sprint, independently building multiple AI-powered QA tools, from a real-time metrics dashboard to a failure detection engine and estimation agent.
+        </p>
+        <p>
+          Outside of work I'm a freelance front-end developer, building responsive websites for clients, and I share my love of gardening, styling, cooking, and festivals on Instagram.
+        </p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/gandham_vimala" target="_blank">↗ Follow on Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="fade-in">
+    <div class="section-label">Capabilities</div>
+    <h2>Skills</h2>
+    <div class="divider"></div>
+    <ul>
+      <li>Manual Testing</li>
+      <li>Test Automation</li>
+      <li>Selenium &amp; TestNG</li>
+      <li>JUnit Framework</li>
+      <li>Jira &amp; Xray</li>
+      <li>API Testing (Postman)</li>
+      <li>Python Scripting</li>
+      <li>JavaScript</li>
+      <li>HTML5 &amp; CSS3</li>
+      <li>Responsive Design</li>
+      <li>GitHub &amp; CI/CD</li>
+      <li>SQL &amp; Databases</li>
+      <li>Streamlit / AI Tools</li>
+      <li>Mobile Testing</li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="fade-in">
+    <div class="section-label">Work &amp; Projects</div>
+    <h2>Projects</h2>
+    <div class="divider"></div>
+
+    <!-- ── WORK AI SPRINT POCs ── -->
+    <div class="category-header">
+      <span class="category-badge badge-work">AI Sprint POCs</span>
+      <span class="category-title">ON24 &nbsp;·&nbsp; 2-Week Sprint</span>
+      <span class="category-line"></span>
+    </div>
+
+    <!-- QA AI Dashboard -->
+    <div class="project ai-project">
+      <div class="project-header">
+        <h3>🧠 QA AI Dashboard</h3>
+        <span class="project-meta">ON24 · 2-Week AI Sprint</span>
+      </div>
+      <p class="project-desc">
+        A unified dashboard integrating 6 AI-powered QA tools for smart test analysis and release readiness. Pulls live data from Jira, processes it with Python, and surfaces real-time insights through an interactive Streamlit UI replacing hours of manual report generation.
+      </p>
+      <div class="poc-tools">
+        <div class="poc-tool"><strong>TRACE</strong>Detects duplicate bugs using TF-IDF similarity</div>
+        <div class="poc-tool"><strong>SHIELD</strong>Regression risk &amp; module impact analysis</div>
+        <div class="poc-tool"><strong>PULSE</strong>Real-time sprint QA progress tracking</div>
+        <div class="poc-tool"><strong>LENS</strong>Identifies regression bug patterns</div>
+        <div class="poc-tool"><strong>SCOUT</strong>Validates acceptance criteria coverage</div>
+        <div class="poc-tool"><strong>BEACON</strong>Release readiness decision engine</div>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag teal">Python</span>
+        <span class="tech-tag teal">Streamlit</span>
+        <span class="tech-tag teal">Jira REST API</span>
+        <span class="tech-tag teal">scikit-learn</span>
+        <span class="tech-tag teal">pandas</span>
+        <span class="tech-tag teal">TF-IDF / NLP</span>
+      </div>
+    </div>
+
+    <!-- Automation Job Health Monitor -->
+    <div class="project ai-project">
+      <div class="project-header">
+        <h3>⚙️ Automation Job Health Monitor</h3>
+        <span class="project-meta">ON24 · 2-Week AI Sprint</span>
+      </div>
+      <p class="project-desc">
+        A continuous monitoring tool that tracks the health of Jenkins automation jobs, flags flaky tests, identifies coverage gaps, and generates automated health reports giving the QA team instant visibility into suite stability without manual investigation.
+      </p>
+      <ul>
+        <li>Real-time Jenkins job status monitoring and trend tracking</li>
+        <li>Automatic detection of flaky tests and failure patterns</li>
+        <li>Automated health report generation per sprint</li>
+        <li>Coverage gap identification across test suites</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag teal">Python</span>
+        <span class="tech-tag teal">Jenkins API</span>
+        <span class="tech-tag teal">Streamlit</span>
+        <span class="tech-tag teal">Automation Analytics</span>
+      </div>
+    </div>
+
+    <!-- QA Estimation Agent -->
+    <div class="project ai-project">
+      <div class="project-header">
+        <h3>📊 QA Estimation Agent</h3>
+        <span class="project-meta">ON24 · 2-Week AI Sprint</span>
+      </div>
+      <p class="project-desc">
+        A smart estimation assistant that pulls Jira stories, analyzes complexity, and generates data-driven QA time estimates. Features an interactive sidebar for configuring project parameters and visualizes estimates with Plotly charts, eliminating guesswork from sprint planning.
+      </p>
+      <ul>
+        <li>Connects to Jira REST API to fetch live stories and epics</li>
+        <li>Rule-based complexity scoring with configurable multipliers</li>
+        <li>Interactive Plotly visualizations for estimation breakdown</li>
+        <li>Exportable estimates for sprint planning sessions</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag teal">Python</span>
+        <span class="tech-tag teal">Streamlit</span>
+        <span class="tech-tag teal">Jira REST API</span>
+        <span class="tech-tag teal">Plotly</span>
+        <span class="tech-tag teal">pandas</span>
+      </div>
+    </div>
+
+    <!-- Failure Detection Pattern Engine -->
+    <div class="project ai-project">
+      <div class="project-header">
+        <h3>🔍 Failure Detection Pattern Engine</h3>
+        <span class="project-meta">ON24 · 2-Week AI Sprint</span>
+      </div>
+      <p class="project-desc">
+        An intelligent pattern recognition system that analyzes automation failure logs, automatically categorizes root causes, and surfaces recurring failure trends across sprints turning noisy test output into actionable engineering intelligence.
+      </p>
+      <ul>
+        <li>Pattern recognition applied to automation failure logs</li>
+        <li>Automatic root cause categorization (infra, test, app, data)</li>
+        <li>Cross-sprint failure trend surfacing and visualization</li>
+        <li>Reduces triage time by pre-clustering failure signatures</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag teal">Python</span>
+        <span class="tech-tag teal">Pattern Recognition</span>
+        <span class="tech-tag teal">Log Analysis</span>
+        <span class="tech-tag teal">NLP</span>
+      </div>
+    </div>
+
+    <!-- ── PERSONAL AI TOOLS ── -->
+    <div class="category-header" style="margin-top:2rem;">
+      <span class="category-badge badge-ai">Personal AI Tools</span>
+      <span class="category-title">Independent Builds</span>
+      <span class="category-line"></span>
+    </div>
+
+    <!-- SnipForge -->
+    <div class="project ai-project">
+      <div class="project-header">
+        <h3>🎬 SnipForge</h3>
+        <span class="project-meta">Personal Project · 2025</span>
+      </div>
+      <a class="project-link" href="https://snipforge.video" target="_blank" rel="noopener">↗ snipforge.video</a>
+      <p class="project-desc">
+        An AI-powered video editor that intelligently clips, trims, and repurposes long-form video into shareable highlight reels making professional video editing accessible without a steep learning curve.
+      </p>
+      <ul>
+        <li>AI-driven scene detection and smart clip extraction</li>
+        <li>Repurpose long videos into short-form highlight reels</li>
+        <li>Browser-based, no software installation required</li>
+        <li>Live at snipforge.video</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag teal">AI Video</span>
+        <span class="tech-tag teal">Web App</span>
+        <span class="tech-tag teal">Content Creation</span>
+        <span class="tech-tag teal">Live</span>
+      </div>
+    </div>
+
+    <!-- ApplyAI -->
+    <div class="project ai-project">
+      <div class="project-header">
+        <h3>🤖 ApplyAI</h3>
+        <span class="project-meta">Personal Project · 2025</span>
+      </div>
+      <p class="project-desc">
+        An AI-powered job application assistant that helps candidates tailor their resumes, draft cover letters, and track applications making the job search process smarter and less time-consuming.
+      </p>
+      <div class="tech-tags">
+        <span class="tech-tag teal">AI / LLM</span>
+        <span class="tech-tag teal">Job Search</span>
+        <span class="tech-tag teal">Productivity</span>
+      </div>
+    </div>
+
+    <!-- ── FREELANCE ── -->
+    <div class="category-header" style="margin-top:2rem;">
+      <span class="category-badge badge-freelance">Freelance</span>
+      <span class="category-title">Client Websites</span>
+      <span class="category-line"></span>
+    </div>
+
+    <!-- 7 Wonder Decor -->
+    <div class="project freelance-project">
+      <div class="project-header">
+        <h3>🎉 7 Wonder Decor &amp; Events Website</h3>
+        <span class="project-meta">Freelance · Mar 2025 to Present</span>
+      </div>
+      <a class="project-link" href="https://gandhamvimala.github.io/7decor/" target="_blank" rel="noopener">↗ Live Site</a>
+      <p class="project-desc">
+        Responsive, client-focused website for a boutique event planning company. Features a custom rental ordering system, curated event gallery, and seamless client inquiry flow.
+      </p>
+      <ul>
+        <li>Mobile-first design across all device sizes</li>
+        <li>Custom rental module with real-time cart and pricing summary</li>
+        <li>Event gallery showcasing weddings, baby showers, and milestones</li>
+        <li>Deployed on GitHub Pages</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag orange">HTML5</span>
+        <span class="tech-tag orange">CSS3</span>
+        <span class="tech-tag orange">JavaScript</span>
+        <span class="tech-tag orange">GitHub Pages</span>
+      </div>
+    </div>
+
+    <!-- Saree Draping -->
+    <div class="project freelance-project">
+      <div class="project-header">
+        <h3>💎 Saree Draping &amp; Hair Styling Website</h3>
+        <span class="project-meta">Freelance · Apr 2025 to Present</span>
+      </div>
+      <a class="project-link" href="https://gandhamvimala.github.io/Glamup-saree-draping/" target="_blank" rel="noopener">↗ Live Site</a>
+      <p class="project-desc">
+        Vibrant, responsive website promoting professional saree draping and hair styling services, with a booking form, service gallery, and client testimonials.
+      </p>
+      <ul>
+        <li>Mobile-first layout with service showcase gallery</li>
+        <li>Booking form for scheduling appointments</li>
+        <li>Testimonials section and detailed pricing content</li>
+        <li>Deployed on GitHub Pages</li>
+      </ul>
+      <div class="tech-tags">
+        <span class="tech-tag orange">HTML5</span>
+        <span class="tech-tag orange">CSS3</span>
+        <span class="tech-tag orange">JavaScript</span>
+        <span class="tech-tag orange">GitHub Pages</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="fade-in">
+    <div class="section-label">Download</div>
+    <h2>Resume</h2>
+    <div class="divider" style="margin: 0.75rem auto 1.25rem;"></div>
+    <a href="Vimala_Gandham_Resume.docx" target="_blank" class="resume-btn">↓ Download My Resume</a>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in">
+    <div class="section-label">Get in Touch</div>
+    <h2>Contact Me</h2>
+    <div class="divider"></div>
+    <form action="https://formspree.io/f/mqaqpaag" method="POST" id="contactForm">
+      <div class="input-group">
+        <input type="text" name="name" id="name" placeholder=" " required />
+        <label for="name">Your Name</label>
+      </div>
+      <div class="input-group">
+        <input type="email" name="_replyto" id="email" placeholder=" " required />
+        <label for="email">Your Email</label>
+      </div>
+      <div class="input-group">
+        <textarea name="message" id="message" rows="5" placeholder=" " required></textarea>
+        <label for="message">Your Message</label>
+      </div>
+      <button type="submit">Send Message</button>
+      <p class="form-feedback" id="formFeedback"></p>
+    </form>
+    <p>Or email directly: <a href="mailto:gandhamvimala@gmail.com">gandhamvimala@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Vimala Gandham. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Contact form
+    const form = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      }).then(r => {
+        if (r.ok) {
+          feedback.textContent = "Thanks for reaching out! I'll get back to you soon.";
+          form.reset();
+        } else {
+          feedback.textContent = "Something went wrong. Please try again.";
+        }
+      }).catch(() => {
+        feedback.textContent = "Error sending message. Please try again.";
+      });
+    });
+  </script>
+
+</body>
+</html>
